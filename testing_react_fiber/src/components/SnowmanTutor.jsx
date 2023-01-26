@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import { useSpeechSynthesis } from 'react-speech-kit'
 import { useFrame } from '@react-three/fiber'
-import SpeechRecognition , { useSpeechRecognition } from 'react-speech-recognition'
 // import reducer from './speechReducer'
 
 

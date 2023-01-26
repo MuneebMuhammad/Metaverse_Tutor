@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useEffect, useReducer } from 'react'
+import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useSpeechSynthesis } from 'react-speech-kit'
 import SpeechRecognition , { useSpeechRecognition } from 'react-speech-recognition'

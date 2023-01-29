@@ -9,12 +9,14 @@ import Snowman from './components/Snowman';
 import SnowmanTutor from './components/SnowmanTutor';
 import Teacher from './components/Teacher';
 import Student from './components/Student'
+import BusinessMan from './components/BusinessMan'
 
 function App() {
   const [speechText, setSpeechText] = useState("")
-  const gltf = useLoader(GLTFLoader, '/teacher.gltf')
+  const gltf = useLoader(GLTFLoader, '/businessMan.gltf')
   const gltfClass = useLoader(GLTFLoader, '/classRoom.gltf')
   const mixerRef = useRef();
+  // console.log("animatoins:", gltf.animations)
   return (
       <Canvas camera={{ position: [0, 0, 7], up: [0, 0, 1], far: 10000 }} style={{ position: 'absolute', width: '100%', height: '100%' }}>
       <Suspense fallback={null}>
@@ -37,8 +39,9 @@ function App() {
         {/* <Snowman rotation={[0,0,-Math.PI/2]} position={[-5,0,0]} setSpeechText={setSpeechText}></Snowman>
         <SnowmanTutor rotation={[0,0,Math.PI/2]} position={[5,0,0]} speechText={speechText}></SnowmanTutor> */}
         <Teacher rotation={[Math.PI/2, Math.PI/2, 0]} position={[-9, -2,0]} scale={1.75} speechText={speechText}></Teacher>
-        <Student rotation={[-Math.PI/2, -Math.PI/2, Math.PI]} position ={[-4,-1, 0]} scale={2} setSpeechText={setSpeechText}></Student>
+        {/* <Student rotation={[-Math.PI/2, -Math.PI/2, Math.PI]} position ={[-4,-1, 0]} scale={2} setSpeechText={setSpeechText}></Student> */}
         <primitive object={gltfClass.scene} rotation={[Math.PI/2, 0, 0]}/>
+        <BusinessMan rotation={[-Math.PI/2, -Math.PI/2, Math.PI]} position ={[-4,-1, 0]} scale={2} setSpeechText={setSpeechText}/>
         {/* <primitive ref={mixerRef} object={gltf.scene} rotation={[Math.PI/2, Math.PI/2, 0]} position={[-9, -2,0]} scale={1.75}/> */}
         {/* <animationMixer ref={mixerRef} clips={gltf.animations} /> */}
         <Plane></Plane>

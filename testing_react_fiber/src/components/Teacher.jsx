@@ -10,7 +10,7 @@ Title: Animated Female Teacher for Narration
 import React, { useRef, useState, useEffect } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useSpeechSynthesis } from 'react-speech-kit'
-import { useFrame } from '@react-three/fiber'
+import { act, useFrame } from '@react-three/fiber'
 
 export default function Model(props) {
   const [talk, setTalk] = useState(true)
@@ -25,18 +25,18 @@ export default function Model(props) {
   useEffect(()=>{
     console.log("Response:", (props.speechText))
     speak({text: props.speechText})
+    if (props.speechText != ""){
+      actions.Animation.stop()
+      actions.Animation.play()
+    }
     setTimeCount(0)
   }, [props.speechText])
 
   useFrame((state, delta)=>{
     setTimeCount(timeCount + 1)
-    if (timeCount < 60) {
-      setTalk(false)
+    if (timeCount > 400) {
+      actions.Animation.halt()
     }
-    else if (timeCount < 120) setTalk(true)
-    else if (timeCount < 180) setTalk(false)
-    else if (timeCount < 240) setTalk(true)
-    else setTalk(false)
   })
 
   return (
